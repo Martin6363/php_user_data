@@ -33,19 +33,37 @@ h2 {
 
 form {
     width: 100%;
+
+    .form-group {
+        margin: 15px 0;
+    
+        &:nth-child(5) {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+    
+        &:nth-child(5) .gender-label {
+            display: inline;
+            font-weight: 400;
+            margin: 0 4px 0 7px;
+            cursor: pointer;
+        }
+    
+        &:nth-child(5) input {
+            width: initial;
+            padding: 5px;
+        }
+    }
 }
 
-.form-group {
-    margin: 15px 0;
-}
-
-.form-group label {
+label {
     display: block;
     font-weight: bold;
     color: #999;
 }
 
-.form-group input {
+input {
     width: 100%;
     padding: 10px;
     border: none;
@@ -56,11 +74,7 @@ form {
     transition: border-color 0.2s;
 }
 
-.form-group input:focus + label {
-    color: #fff;
-}
-
-.form-group button {
+button {
     width: 100%;
     background: #007BFF;
     color: #fff;
@@ -70,28 +84,6 @@ form {
     cursor: pointer;
 }
 
-.form-group button:hover {
+button:hover {
     background: #0056b3;
-}
-
-.form-group:nth-child(5) {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-}
-
-.form-group:nth-child(5) .gender-label {
-    display: inline;
-    font-weight: 400;
-    margin: 0 4px 0 7px;
-    cursor: pointer;
-}
-
-.form-group:nth-child(5) input {
-    width: initial;
-    padding: 5px;
-}
-
-.form-group:nth-child(5) input:checked ~ .gender-label{
-    color: red;
 }
