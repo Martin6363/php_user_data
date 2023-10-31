@@ -19,9 +19,6 @@ if ($action === 'Small to Large') {
     $_SESSION['numbers'] = generateRandomNumbers();
 }
 
-header('Content-Type: application/json');
-echo json_encode($_SESSION['numbers']);
-exit();
 
 function generateRandomNumbers() {
     $randomNumbers = [];
@@ -44,4 +41,8 @@ function largeToSmall( $a, $b ) {
     elseif ( $a == $b ) return 0;
     else return 0;
 }
+
+header('Content-Type: application/json');
+echo json_encode($_SESSION['numbers']);
+exit();
 ?>

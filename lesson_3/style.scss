@@ -36,36 +36,46 @@ form {
 
     .form-group {
         margin: 15px 0;
-    
-        &:nth-child(5) {
+        position: relative;
+        &.form-gender {
             display: flex;
             align-items: center;
             justify-content: start;
         }
     
-        &:nth-child(5) .gender-label {
+        &.form-gender .gender-label {
             display: inline;
             font-weight: 400;
             margin: 0 4px 0 7px;
             cursor: pointer;
         }
     
-        &:nth-child(5) input {
+        &.form-gender input {
             width: initial;
             padding: 5px;
         }
     }
 }
 
+.phone_and_date_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & > input {
+        width: 35%;
+    }
+}
+
 label {
     display: block;
     font-weight: bold;
+    font-size: 13px;
     color: #999;
 }
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     border: none;
     border-bottom: 2px solid #ccc;
     background: transparent;
@@ -86,4 +96,27 @@ button {
 
 button:hover {
     background: #0056b3;
+}
+
+.form-group .text {
+    color: #e74c3c;
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    font-size: 12px;
+    font-family: sans-serif;
+    visibility: hidden;
+}
+
+.form-group.error input{
+    border-color: #e74c3c;
+}
+
+.form-group.error .text{
+    visibility: visible;
+}
+
+.form-group.success input {
+    border-color: #23cc71;
 }
