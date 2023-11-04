@@ -55,6 +55,13 @@ form {
             padding: 5px;
         }
     }
+
+    .error_mess {
+        color: #e74c3c;
+        border-left: 4px solid #e74c3c;
+        padding-left: 4px;
+        border-radius: 3px;
+    }
 }
 
 .phone_and_date_box {
@@ -82,6 +89,29 @@ input {
     color: #fff;
     outline: none;
     transition: border-color 0.2s;
+}
+
+.form_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    & a {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        text-decoration: none;
+        font-family: sans-serif;
+        color: #fff;
+        background: #88888895;
+        font-size: 14px;
+        border-radius: 5px;
+
+        &:hover {
+            background: rgba(109, 109, 109, 0.722);
+        }
+    }
 }
 
 button {
@@ -119,4 +149,70 @@ button:hover {
 
 .form-group.success input {
     border-color: #23cc71;
+}
+
+
+
+
+
+.login-form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+
+    h2 {
+        color: #333;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .input-container {
+            position: relative;
+            margin: 20px 0;
+            width: 100%;
+
+            input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                transition: border-color 0.3s;
+
+                &:focus {
+                    border-color: #0078d4;
+                }
+            }
+
+            label {
+                position: absolute;
+                top: 12px;
+                left: 10px;
+                color: #888;
+                transition: 0.3s;
+                font-size: 14px;
+            }
+        }
+
+        .login-button {
+            background-color: #0078d4;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+    }
 }

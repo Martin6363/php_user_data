@@ -1,0 +1,19 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $_SESSION['login_data'] = [
+        'user_login' => $_GET['user_login'],
+        'user_password' => $_GET['user_password']
+    ];
+
+    if ($_SESSION['login_data']['user_login'] === $_SESSION['form_data']['username'] && $_SESSION['login_data']['user_password'] === $_SESSION['form_data']['password']) {
+        header('Location: ../lesson_4/index.php');
+        exit();
+    } else {
+        $_SESSION['error_login'] = "Username or password is incorrect";
+        header('Location: loginPage.php');
+        exit();
+    }
+}
+?>

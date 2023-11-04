@@ -58,9 +58,18 @@
                     <span class="text"></span>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group form_button">
                 <button type="submit" id="submit_button">Register</button>
+                <a href="./loginPage.php">Login</a>
             </div>
+
+            <?php
+                session_start();
+                if (isset($_SESSION['error_message'])) {
+                    echo '<p class="error_mess">' . $_SESSION['error_message'] . '</p>';
+                    unset($_SESSION['error_message']); // Clear the error message from the session
+                }
+            ?>
         </form>
     </div>
     <script src="./register.js"></script>

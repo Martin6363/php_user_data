@@ -104,6 +104,7 @@ function checkPasswordValid (input) {
         isValid = false;
     } else {
         inputSuccess(input);
+        isValid = true;
     }
 
     return isValid;
@@ -142,32 +143,32 @@ function validateForm() {
 function checkAllInputValues() {
     let isValid = true;
 
-    if (firstName.value === '') {
+    if (firstName.value.trim() === '') {
         inputError(firstName, 'Name is required');
         isValid = false;
     }
 
-    if (lastName.value === '') {
+    if (lastName.value.trim() === '') {
         inputError(lastName, 'Last name is required');
         isValid = false;
     }
 
-    if (username.value === '') {
+    if (username.value.trim() === '') {
         inputError(username, 'Username is required');
         isValid = false;
     }
 
-    if (email.value === '') {
+    if (email.value.trim() === '') {
         inputError(email, 'Email is required');
         isValid = false;
     }
 
-    if (password.value === '') {
+    if (password.value.trim() === '') {
         inputError(password, 'Password is required');
         isValid = false;
     }
 
-    if (confirmPassword.value === '') {
+    if (confirmPassword.value.trim() === '') {
         inputError(confirmPassword, 'Confirm Password is required');
         isValid = false;
     }
@@ -214,7 +215,7 @@ form.addEventListener('submit', function (event) {
         checkConfirmPasswordValid(confirmPassword)
         // validateForm();
 
-    if (!checkAllInputValues() || !isFormValid) {
+    if (!isFormValid) {
         event.preventDefault();
     }
 });
@@ -230,7 +231,6 @@ submitButton.addEventListener('click', function (event) {
         // validateForm(); 
 
     if (!checkAllInputValues() || !isFormValid) {
-        event.preventDefault();
-        
+        event.preventDefault(); 
     }
 });
