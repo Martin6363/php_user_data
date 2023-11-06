@@ -101,6 +101,19 @@ body {
                 font-family: sans-serif;
                 font-size: 16px;
             }
+
+            .account_setting_box {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+
+              .account_name {
+                color: #f2f2f2;
+                font-size: 12px;
+                border-right: 3px solid #f2f2f2;
+                padding-right: 5px;
+              }
+            }
         }
     }
 }
@@ -127,4 +140,77 @@ body {
         opacity: 1;
         transform: none;
     }
+}
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #007BFF;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+input[type="text"] {
+  padding: 5px;
+  width: 120px;
+  margin: 5px 10px 0 10px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.action-buttons button {
+  margin: 5px;
 }

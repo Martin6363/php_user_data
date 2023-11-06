@@ -10,6 +10,7 @@
     <div class="container">
         <div class="login-form">
             <h2>Login</h2>
+            <a class="web_site_link" href="../lesson_4/index.php">← Go to Web Site Demo</a>
             <form class="form" action="./loginData.php" method="get">
                 <div class="input-container">
                     <input type="text" id="username" name="user_login" required>
