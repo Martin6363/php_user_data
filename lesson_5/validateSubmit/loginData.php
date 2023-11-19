@@ -8,11 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     ];
 
     if ($_SESSION['login_data']['user_login'] == $_SESSION['registration_data']['username'] && $_SESSION['login_data']['user_password'] == $_SESSION['registration_data']['password']) {
-        header('Location: ../lesson_4/index.php');
+        header('Location: ../home/home.php');
         exit();
     } else {
         $_SESSION['error_login'] = "Username or password is incorrect";
-        header('Location: loginPage.php');
+        header('Location: ./pages/loginPage.php');
         exit();
     }
 }

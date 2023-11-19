@@ -59,7 +59,7 @@ label {
     transform: translateY(-50%);
     left: 10px;
     color: #888;
-    background: #444;
+    background: transparent;
     transition: 0.3s;
     font-size: 14px;
     padding: 3px;
@@ -87,12 +87,14 @@ input:focus + label {
     top: 0;
     transform: translateY(-50%);
     color: #0078d4;
+    background: #444;
 }
 
 input:valid + label {
     top: 0;
     transform: translateY(-50%);
     color: #0078d4;
+    background: #444;
 }
 
 .login-button {

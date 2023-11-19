@@ -13,12 +13,12 @@
 <html>
 <head>
     <title>Registration Form</title>
-    <link rel="stylesheet" href="./style.scss">
+    <link rel="stylesheet" href="../assets/styles/register.scss">
 </head>
 <body>
     <div class="container">
         <h2>Registration</h2>
-        <form action="./registerData.php" method="post" id="form">
+        <form action="../validateSubmit/registerData.php" method="post" id="form">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="f_name" value="<?php if(isset($_SESSION['reg_old']['f_name']))
@@ -104,13 +104,9 @@
                 <label class="gender-label" for="female" >Female
                     <input type="radio" id="female" name="gender">
                 </label>
-                <span class="text">
-                    <?php
-                        if (isset($_SESSION['error_message']['gender'])) {
-                            echo $_SESSION['error_message']['gender'];
-                        }
-                    ?>
-                </span> 
+                <label class="gender-label" for="other" >Other
+                    <input type="radio" id="other" name="gender" checked>
+                </label>
             </div>
             <div class="phone_and_date_box">
                 <div class="phone_box">
@@ -142,7 +138,7 @@
             </div>
             <div class="form-group form_button">
                 <button type="submit" id="submit_button" name="register">Register</button>
-                <a href="./loginPage.php">Login</a>
+                <a href="./loginPage.php?login<?php unset($_SESSION['error_message']);?>">Login</a>
             </div>
         </form>
     </div>

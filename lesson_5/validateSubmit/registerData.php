@@ -2,7 +2,7 @@
 session_start();
 unset($_SESSION['error_message']);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
     $userData = [];
 
     foreach ($_POST as $key => $dataValue) {
@@ -50,10 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['email'] = 'Email is required';
     }
 
-    if (!$gender) {
-        $errors['gender'] = 'Gender is required';
-    };
-
     if (!$phone) {
         $errors['phone'] = 'Phone number is required';
     } 
@@ -72,12 +68,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($errors)) {
         unset($_SESSION['error_message']);
         $_SESSION['error_message'] = $errors;
-        header("Location: formRegister.php");
+        header("Location: ../pages/registerPage.php");
         exit();
     } else {
         unset($_SESSION['error_message']);
         unset($_SESSION['reg_old']);
-        header("Location: loginPage.php");
+        header("Location: ../pages/loginPage.php");
         exit();
     }
 }

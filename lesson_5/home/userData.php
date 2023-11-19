@@ -64,23 +64,4 @@ session_start();
     ];
 
     $user_data = $_SESSION['usersData'];
-
-    if (isset($_POST['delete_user'])) {
-        if (empty($_SESSION['login_data'])) {
-            header("Location: ../lesson_5/loginPage.php");
-            exit();
-        } else {
-            $deleteId = (int)$_POST['delete_user'];
-            foreach ($user_data as $key => $userData) {
-                if ($userData['id'] === $deleteId) {
-                    unset($user_data[$key]);
-                    break;
-                }
-            }
-        }
-    }
-    
-        // $user_data = array_values($user_data);
-        // header("Location: ./index.php");
-        // exit();
 ?>
