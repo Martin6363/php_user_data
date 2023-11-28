@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #222;
+}
+
+label {
+    color: #fff
+}
+
+.container {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.lead {
+    font-size: 13px !important;
+    font-weight: bold;
+    color: #8c8c8c;
+}
+
+.display-6 {
+    font-size: 19px !important;
+}
