@@ -1,12 +1,5 @@
 <?php
     session_start();
-    // echo '<pre>';
-    // print_r($_SESSION['error_message']);
-    // echo '<hr>';
-    // print_r($_SESSION['reg_old']);
-    // echo '<hr>';
-    // print_r($_SESSION['registration_data']);
-    // echo '</pre>';
 ?>
 
 <!DOCTYPE html>

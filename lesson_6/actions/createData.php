@@ -11,16 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
     $last_name = isset($_POST['l_name']) ? $_POST['l_name'] : '';
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     $image = isset($_FILES['image']) ? $_FILES['image'] : '';
+
     $imageValidation = validateImage($image);
-    
     $firstNameValidation = validateName($first_name, 'first name');
     $lastNameValidation = validateLastName($last_name, 'last name');
     $emailValidation = validateEmail($email);
 
     if ($imageValidation === true && $firstNameValidation === true && $lastNameValidation === true && $emailValidation === true) {
-        $image_name = $id . '_' . basename($image['name']);
+        $image_name = "($id)" . '_' . basename($image['name']);
         $target_dir = '../upload/move_image/';
         $target_path = $target_dir . $image_name;
+
         if (move_uploaded_file($image['tmp_name'], $target_path)) {
             $new_data = [
                 'id' => $id,
@@ -36,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
             file_put_contents($file_name, $data_json);
 
             $_SESSION['message'] = "Data added successfully!";
-            unset( $_SESSION['old_value']);
+            unset($_SESSION['old_value']);
             header('Location: ../pages/createPage.php');
             exit();
         } else {

@@ -22,3 +22,11 @@ body{
     object-fit: cover;
     object-position: center;
 }
+
+.action-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 100%;
+}
