@@ -1,6 +1,5 @@
 <?php
 session_start();
-include '../home/userData.php';
 require '../connectMySql.php';
 
     if(isset($_POST['update_user'])) {
@@ -33,7 +32,6 @@ require '../connectMySql.php';
             }
         }
     }
-
 ?>
 
 
@@ -118,6 +116,7 @@ require '../connectMySql.php';
                                     echo "<h4> NO Such Id Found";
                                 }
                             } 
+                            mysqli_close($con);
                         ?>
                     </div>
                 </div>

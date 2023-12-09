@@ -6,7 +6,7 @@
 <html>
 <head>
     <title>Registration Form</title>
-    <link rel="stylesheet" href="../assets/styles/register.scss">
+    <link rel="stylesheet" href="../assets/styles/register.css">
 </head>
 <body>
     <div class="container">

@@ -4,4 +4,6 @@
     if (!$con) {
         die(mysqli_connect_error($con));
     }
+
+    // mysqli_close($con);
 ?>

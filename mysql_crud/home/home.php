@@ -1,6 +1,5 @@
 <?php
 session_start();
-include './userData.php';
 require '../connectMySql.php';
 
 $subMenu = [
@@ -87,7 +86,11 @@ function generateSubMenu($menuItems) {
                             <div class="card-header">
                                 <h4>User Details
                                     <a href="../actions/createData.php" name="filter_submit" class="btn btn-primary float-end">Add User</a>
-                            </h4>
+                                </h4>
+                                <div class="input-group mb-3 mt-3">
+                                    <input type="text" class="form-control" id="search" placeholder="Search">
+                                    <button class="btn btn-outline-secondary bg-warning bg-gradient" type="button" id="button-addon2">Search</button>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table class="table table-bordered table-striped">
@@ -96,7 +99,12 @@ function generateSubMenu($menuItems) {
                                             <th>No</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
-                                            <th>Age</th>
+                                            <th>
+                                                <a href="#" id="sorting" data-column="age" data-order="desc" title="Sort Desc"><i class="fa-solid fa-arrow-down-9-1"></i></a>
+                                                    Age 
+                                                <a href="#" id="sorting" data-column="age" data-order="asc" title="Sort Asc"><i class="fa-solid fa-arrow-up-1-9" title="Sort Asc"></i></a>
+                                                <a href="home.php" title="In ascending order"><i class="fa-solid fa-retweet ms-2 text-muted"></i></a>
+                                            </th>
                                             <th>Email</th>
                                             <th>Gender</th>
                                             <th>Country</th>
@@ -105,46 +113,73 @@ function generateSubMenu($menuItems) {
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <?php
-                                            $query = "SELECT * FROM crud";
-                                            $query_run = mysqli_query($con, $query);
-                                            if (mysqli_num_rows($query_run) > 0) {
-                                                foreach($query_run as $userValue) {
-                                                    ?>
-                                                    <tr>
-                                                        <td><?= $userValue['id'];?></td>
-                                                        <td><?= $userValue['f_name'];?></td>
-                                                        <td><?= $userValue['l_name'];?></td>
-                                                        <td><?= $userValue['age'];?></td>
-                                                        <td><?= $userValue['email'];?></td>
-                                                        <td><?= $userValue['gender'];?></td>
-                                                        <td><?= $userValue['country'];?></td>
-                                                        <td><?= $userValue['phone_number'];?></td>
-                                                        <td><?= $userValue['born'];?></td>
-                                                        <td>
-                                                            <div class="action-table-box">
-                                                                <a href="../actions/viewData.php?id=<?= $userValue['id']; ?>" name="view_user" class="btn btn-info btn-sm">View</a>
-                                                                <a href="../actions/editData.php?id=<?= $userValue['id']; ?>" name="edit_user" class="btn btn-success btn-sm">Edit</a>
-                                                                <form action="../actions/deleteData.php" method="post" class="d-inline">
-                                                                    <button class="btn btn-danger btn-sm" name="delete_user" value="<?= $userValue['id'];?>">Delete</button>
-                                                                </form>
-                                                            </div>
-                                                       </td>
-                                                    </tr>
-                                                    <?php
-                                                }
-                                            } else {
-                                                echo "<h5> No Record Found </h5>";
-                                            }
-                                        ?>
+                                    <tbody id="showData">
+                                        <?php include('pagination_and_table.php'); ?>
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div>    
+                        <div class="page_limit_box">
+                            <nav>
+                                <ul class="pagination justify-content-center align-items-center mt-3">
+                                    <li class="page-item"><a class="page-link" href="home.php?page=<?= $page > 1 ? $page - 1 : $page = 1?>">Previous</a></li>
+                                    <?php
+                                        for ($i = 1; $i <= $number_of_pages; $i++) {
+                                            echo '<li class="page-item"><a class="page-link ' . ($page == $i ? "pagination_link" : '') . '" href="home.php?page='. $i .'">'. $i .'</a></li>';
+                                        }
+                                    ?>
+                                    <li class="page-item"><a class="page-link" href="home.php?page=<?= $page < $number_of_pages ? $page + 1 : $page = 1?>">Next</a></li>
+                                </ul>
+                            </nav>
+                            <form method="get" action="home.php" class="show_limit_page_box float-end">
+                                <p class="mt-3 text-light">Show per page:</p>
+                                <select class="form-select form-select-sm" name="limit_page" onchange="this.form.submit()">
+                                    <option value="5" <?= $pages_limit == 5 ? 'selected' : ''; ?>>5 (default)</option>
+                                    <option value="10" <?= $pages_limit == 10 ? 'selected' : ''; ?>>10</option>
+                                    <option value="50" <?= $pages_limit == 50 ? 'selected' : ''; ?>>50</option>
+                                </select>
+                            </form> 
+                        </div>   
                     </div>
                 </div>
             </div>
         </main>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('#search').on("keyup", function () {
+                let searchValue = $(this).val();
+                $.ajax({
+                    method: 'GET',
+                    url: '../actions/search_user.php',
+                    data: {search: searchValue},
+                    success: function(response) {
+                        $("#showData").html(response);
+                    }
+                });
+            });
+
+            $('#sorting').click(function (e) {
+                e.preventDefault();
+                let column = $(this).attr('data-column');
+                let order = $(this).attr('data-order');
+                sortData(column, order);
+            });
+
+            function sortData(column, order) {
+                $.ajax({
+                    method: 'GET',
+                    url: '../actions/sortData.php',
+                    data: { sort: column, order: order },
+                    success: function (response) {
+                        if (!response.error) {
+                            $("#showData").html(response);
+                        } else {
+                            console.error(response.error);
+                        }
+                    }
+            });
+            }
+        });
+    </script>
 <?php include("../includes/footer.php")?>

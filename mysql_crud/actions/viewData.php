@@ -75,10 +75,11 @@ require '../connectMySql.php';
                                 </div>
                             </form>
                         <?php
-                            } else {
-                                echo "<h4> NO Such Id Found";
-                            }
-                        } 
+                                } else {
+                                    echo "<h4> NO Such Id Found";
+                                }
+                            } 
+                            mysqli_close($con);
                         ?>
                     </div>
                 </div>

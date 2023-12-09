@@ -25,4 +25,5 @@ if (isset($_POST['delete_user'])) {
         }
     }
 }
+mysqli_close($con);
 ?>

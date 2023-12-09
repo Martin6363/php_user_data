@@ -18,6 +18,12 @@ if (isset($_POST['create_btn'])) {
         $phone = preg_replace("/[^0-9]/", "", $phone);
         $born = $_POST['date_of_birth'];
         
+        if(strlen($phone) > 15) {
+            $_SESSION['message'] = "Phone number is too long.";
+            header("Location: createData.php");
+            exit();
+        }
+
         $query = "INSERT INTO crud (f_name, l_name, age, email, gender, country, phone_number, born) VALUES
         ('$fname', '$lname', '$age', '$email', '$gender', '$country', '$phone', '$born')";
         $query_run = mysqli_query($con, $query);
@@ -33,6 +39,7 @@ if (isset($_POST['create_btn'])) {
         }
     }
 }
+mysqli_close($con);
 ?>
 
 <!doctype html>
@@ -43,8 +50,8 @@ if (isset($_POST['create_btn'])) {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <title>Hello, world!</title>
     </head>
-    <body class="bg-black-50" style="background-color: #f3f3f3">
-        <div class="container my-5 bg-black-50 border w-75 Larger shadow">
+    <body class="bg-black-50" style="background-color: #2A3D4F">
+        <div class="container my-5 bg-black-50 border w-75 Larger shadow bg-light">
             <?php include('../message/createMessage.php')?>
             <form method="post" class="border-1 p-2">
                 <p class="lead text-center display-6">Create User
@@ -85,7 +92,7 @@ if (isset($_POST['create_btn'])) {
                     </label>
                 </div>
                 <label for="country" class="form-label text-secondary">Country</label>
-                <select class="form-select form-select-sm mb-3 w-25" aria-label=".form-select-sm example" id="country" name="country">
+                <select class="form-select form-select-sm mb-3 w-25" aria-label=".form-select-sm example" id="country" name="country" onchange="this.form.submit()">
                     <option selected>Armenia</option>
                     <option value="Russia">Russia</option>
                     <option value="America">America</option>
@@ -103,5 +110,6 @@ if (isset($_POST['create_btn'])) {
                 <a href="../home/home.php" class="btn btn-danger">Chanel</a>
             </form>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 </html>
