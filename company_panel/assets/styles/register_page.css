@@ -1,0 +1,161 @@
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    background: #222;
+    border: 1px solid #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+
+h2 {
+    color: #fff;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+
+.web_site_link {
+    text-decoration: none;
+    color: #888;
+    transition: 0.3s ease;
+}
+
+.web_site_link:hover {
+    color: #f2f2f2;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container {
+    position: relative;
+    margin: 10px 0;
+    width: 100%;
+}
+
+label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    color: #888;
+    background: transparent;
+    transition: 0.3s;
+    font-size: 14px;
+    padding: 3px;
+    cursor: text;
+}
+
+input {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    transition: border-color 0.3s;
+}
+
+input:valid,
+input:focus {
+    border-color: #f2f2f2;
+}
+
+input:focus + label {
+    top: 0;
+    transform: translateY(-50%);
+    color: #aeaeae;
+    background: #222;
+}
+
+input:valid + label {
+    top: 0;
+    transform: translateY(-50%);
+    color: #aeaeae;
+    background: #222;
+}
+
+.login-button {
+    width: 100%;
+    background-color: #156e44;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #238b5b;
+}
+
+.submit-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.submit-box a {
+    text-decoration: none;
+    color: #888;
+    font-family: sans-serif;
+}
+
+.form-select {
+    width: 30%;
+}
+
+.select_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 5px;
+}
+
+.date_box {
+    width: 50% !important;
+}
+
+.date_box input {
+    width: 100% !important;
+}
+
+.date_box .error_text {
+    bottom: -28px;
+    font-size: 10px;
+}
+
+.input-container {
+    position: relative !important;
+}
+
+.error_text {
+    position: absolute;
+    bottom: -16px;
+    left: 5px;
+    z-index: 5;
+    color: red !important;
+    font-size: 12px;
+    width: 100% !important;
+    text-align: start !important;
+}
