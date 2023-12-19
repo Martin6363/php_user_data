@@ -27,9 +27,6 @@
                             <li class="nav-item">
                                 <a class="nav-link nav_link_hover" href="#">Salary Table</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav_link_hover" href="#">Departments</a>
-                            </li>
                         </ul>
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -53,9 +50,6 @@
                             <li class="nav-item">
                                 <a class="nav-link nav_link_hover" href="#">Salary Table</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav_link_hover" href="#">Departments</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -67,35 +61,30 @@
                 <table class="table table-dark table-striped">
                     <thead>
                         <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Handle</th>
+                            <th scope="col">No</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Date of Birth</th>
+                            <th scope="col">Phones</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Create at</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Position</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@instagram</td>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="main_body">
-                    <h3 class="company_title">Your Company</h3>
+                    <h3 class="company_title">Employees</h3>
                     
                 </div>
             </div>

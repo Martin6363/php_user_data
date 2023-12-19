@@ -28,21 +28,21 @@ session_start();
             <h2>Register</h2>
             <form class="form" action="../actions/register.php" method="post">
                 <div class="input-container">
-                    <input type="text" id="first_name" name="first_name" value="<?= isset($_SESSION['reg_old']['first_name']) ? $_SESSION['reg_old']['first_name'] : '' ?>"/>
+                    <input type="text" id="first_name" name="first_name" value="<?= isset($_SESSION['reg_old']['first_name']) ? $_SESSION['reg_old']['first_name'] : '' ?>" required/>
                     <label for="first_name">First name</label>
                     <?php if (isset($_SESSION['error_message']['first_name'])) : ?>
                         <span class="text-light error_text"><?= $_SESSION['error_message']['first_name']?></span>
                     <?php endif; ?>
                 </div>
                 <div class="input-container">
-                    <input type="text" id="last_name" name="last_name" value="<?= isset($_SESSION['reg_old']['last_name']) ? $_SESSION['reg_old']['last_name'] : '' ?>"/>
+                    <input type="text" id="last_name" name="last_name" value="<?= isset($_SESSION['reg_old']['last_name']) ? $_SESSION['reg_old']['last_name'] : '' ?>" required/>
                     <label for="last_name">Last name</label>
                     <?php if (isset($_SESSION['error_message']['last_name'])) : ?>
                         <span class="text-light error_text"><?= $_SESSION['error_message']['last_name']?></span>
                     <?php endif; ?>
                 </div>
                 <div class="input-container">
-                    <input type="email" id="email" name="email" value="<?= isset($_SESSION['reg_old']['email']) ? $_SESSION['reg_old']['email'] : '' ?>"/>
+                    <input type="email" id="email" name="email" value="<?= isset($_SESSION['reg_old']['email']) ? $_SESSION['reg_old']['email'] : '' ?>" required/>
                     <label for="email">Email</label>
                     <?php if (isset($_SESSION['error_message']['email'])) : ?>
                         <span class="text-light error_text"><?= $_SESSION['error_message']['email']?></span>
@@ -54,32 +54,32 @@ session_start();
                         <option value="female">Female</option>
                     </select>
                     <div class="input-container d-flex flex-column date_box">
-                        <input type="date" id="date_of_birth" name="date_of_birth" class="w-50 p-2" value="<?= isset($_SESSION['reg_old']['date_of_birth']) ? $_SESSION['reg_old']['date_of_birth'] : '' ?>"/> 
+                        <input type="date" id="date_of_birth" name="date_of_birth" class="w-50 p-2" value="<?= isset($_SESSION['reg_old']['date_of_birth']) ? $_SESSION['reg_old']['date_of_birth'] : '' ?>" required/> 
                         <?php if (isset($_SESSION['error_message']['date_of_birth'])) : ?>
                             <span class="text-light error_text"><?= $_SESSION['error_message']['date_of_birth']?></span>
                         <?php endif; ?>
                     </div>
                     <div class="input-container w-50 m-0">
-                        <input type="phone" id="phone" name="phone_number" class="p-2" value="<?= isset($_SESSION['reg_old']['phone_number']) ? $_SESSION['reg_old']['phone_number'] : '' ?>"/>
+                        <input type="phone" id="phone" name="phone_number" class="p-2" value="<?= isset($_SESSION['reg_old']['phone_number']) ? $_SESSION['reg_old']['phone_number'] : '' ?>" required/>
                         <label for="phone">Phone</label>
                     </div>
                 </div>
                 <div class="input-container">
-                    <input type="text" id="username" name="username" value="<?= isset($_SESSION['reg_old']['username']) ? $_SESSION['reg_old']['username'] : '' ?>"/>
+                    <input type="text" id="username" name="username" value="<?= isset($_SESSION['reg_old']['username']) ? $_SESSION['reg_old']['username'] : '' ?>" required/>
                     <label for="username">Username</label>
                     <?php if (isset($_SESSION['error_message']['username'])) : ?>
                         <span class="text-light error_text"><?= $_SESSION['error_message']['username']?></span>
                     <?php endif; ?>
                 </div>
                 <div class="input-container">
-                    <input type="password" id="password" name="password" value="<?= isset($_SESSION['reg_old']['password']) ? $_SESSION['reg_old']['password'] : '' ?>"/>
+                    <input type="password" id="password" name="password" value="<?= isset($_SESSION['reg_old']['password']) ? $_SESSION['reg_old']['password'] : '' ?>" required/>
                     <label for="password">Password</label>
                     <?php if (isset($_SESSION['error_message']['password'])) : ?>
                         <span class="text-light error_text"><?= $_SESSION['error_message']['password']?></span>
                     <?php endif; ?>
                 </div>
                 <div class="input-container">
-                    <input type="password" id="confirm_password" name="confirm_password" value="<?= isset($_SESSION['reg_old']['confirm_password']) ? $_SESSION['reg_old']['confirm_password'] : '' ?>"/>
+                    <input type="password" id="confirm_password" name="confirm_password" value="<?= isset($_SESSION['reg_old']['confirm_password']) ? $_SESSION['reg_old']['confirm_password'] : '' ?>" required/>
                     <label for="confirm_password">Confirm Password</label>
                     <?php if (isset($_SESSION['error_message']['confirm_password'])) : ?>
                         <span class="text-light error_text"><?= $_SESSION['error_message']['confirm_password']?></span>

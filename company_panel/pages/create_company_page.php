@@ -60,9 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <li class="nav-item">
                                 <a class="nav-link nav_link_hover" href="#">Salary Table</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav_link_hover" href="#">Departments</a>
-                            </li>
                         </ul>
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -85,9 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav_link_hover" href="#">Salary Table</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav_link_hover" href="#">Departments</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav_link_hover" href="../pages/login_page.php"><?= isset($_SESSION['login_value']) ? 'Logout' : 'Login'?></a>

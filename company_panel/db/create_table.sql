@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS employees (
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    dob INT(15) NOT NULL,
+    dob DATE(20) NOT NULL,
     phone_number INT(25) NOT NULL,
     gender VARCHAR(25) NOT NULL,
     country VARCHAR(100) NOT NULL,
@@ -54,9 +54,7 @@ CREATE TABLE IF NOT EXISTS companies (
 -- Positions table
 CREATE TABLE IF NOT EXISTS positions (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    emp_id INT NOT NULL,
     position_name VARCHAR(255) NOT NULL
-    FOREIGN KEY (emp_id) REFERENCES employees(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
