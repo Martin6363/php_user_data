@@ -1,3 +1,7 @@
+<?php
+    include "../db/connect_db.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,34 +59,64 @@
                 </div>
             </nav>
         </header>
-        <main class="w-100 d-flex align-items-center h-100">
-            <div class="main_content">
-                <h2 class="main_title">Head of the company</h2>
-                <table class="table table-dark table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Date of Birth</th>
-                            <th scope="col">Phones</th>
-                            <th scope="col">Gender</th>
-                            <th scope="col">Country</th>
-                            <th scope="col">Create at</th>
-                            <th scope="col">Company</th>
-                            <th scope="col">Position</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <main class="w-100 d-flex align-items-center h-100 flex-column">
+            <div class="main_content w-100">
+                <h2 class="main_title">Employees Table</h2>
+                <div class="table-responsive w-100">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Date of Birth</th>
+                                <th scope="col">Phones</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Create at</th>
+                                <th scope="col">Company</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Salary amount</th>
+                                <th scope="col">Salary date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <?php
+                                    $query = "SELECT employees.*, companies.company_name, positions.position_name, salaries.*
+                                    FROM employees
+                                    LEFT JOIN companies ON employees.company_id = companies.id
+                                    LEFT JOIN positions ON employees.position_id = positions.id
+                                    LEFT JOIN salaries ON employees.id = salaries.emp_id";
+                                    $result = mysqli_query($conn, $query);
+                                    $count = 1;
+                                    if (mysqli_num_rows($result) > 0) :
+                                        foreach ($result as $value) :
+                                ?>
+                                    <tr>
+                                        <th scope="row"><?= $count?></th>
+                                        <td><?= $value['first_name']?></td>
+                                        <td><?= $value['last_name']?></td>
+                                        <td><?= $value['email']?></td>
+                                        <td><?= $value['dob']?></td>
+                                        <td><?= $value['phone_number']?></td>
+                                        <td><?= $value['gender']?></td>
+                                        <td><?= $value['country']?></td>
+                                        <td><?= $value['create_at']?></td>
+                                        <td><?= $value['company_name']?></td>
+                                        <td><?= $value['position_name']?></td>
+                                        <td><?= $value['amount']?></td>
+                                        <td><?= $value['salary_date']?></td>
+                                    </tr>
+                                <?php
+                                    $count++;
+                                    endforeach;
+                                    endif;
+                                ?>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="main_body">
                     <h3 class="company_title">Employees</h3>
                     

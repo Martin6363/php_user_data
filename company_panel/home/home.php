@@ -55,7 +55,7 @@
                                 <a class="nav-link nav_link_hover" href="../pages/add_employee_page.php">Add Employee</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav_link_hover" href="#">View Employee</a>
+                                <a class="nav-link nav_link_hover" href="../pages/view_employee_page.php">View Employee</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav_link_hover" href="#">Salary Table</a>
