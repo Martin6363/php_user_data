@@ -42,7 +42,7 @@ if (isset($_POST['register'])) {
         dateOfBirth($date_of_birth) === true &&
         validateUserName($username)
     ) {
-        $query = "INSERT INTO users (first_name, last_name, email, gender, phone_num, born, username, user_password) 
+        $query = "INSERT INTO users (first_name, last_name, email, gender, phone_num, born, username, `password`) 
         VALUES ('$first_name', '$last_name', '$email', '$gender', '$phone', '$date_of_birth', '$username', '$password')";
         $query_run = mysqli_query($conn, $query);
 

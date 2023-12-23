@@ -10,7 +10,7 @@
         $_SESSION['login_value']['username'] = $username;
         $_SESSION['login_value']['password'] = $password;
 
-        $query = "SELECT * FROM users WHERE username='$username' AND user_password='$password'";
+        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
         $result = mysqli_query($conn, $query);
     
         if (mysqli_num_rows($result) > 0) {

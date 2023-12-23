@@ -5,13 +5,13 @@
 
     function updateDepartment ($conn, $departmentData) {
         foreach ($departmentData as $department) {
-            $name = mysqli_real_escape_string($conn, $department['department_name']);
+            $name = mysqli_real_escape_string($conn, $department['d_name']);
 
-            $sql = "SELECT * FROM departments WHERE department_name = '$name'";
+            $sql = "SELECT * FROM departments WHERE d_name = '$name'";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) == 0) {
-                $insertSql = "INSERT INTO departments (department_name) VALUES ('$name')";
+                $insertSql = "INSERT INTO departments (d_name) VALUES ('$name')";
                 mysqli_query($conn, $insertSql);
 
                 if (mysqli_errno($conn) != 0) {

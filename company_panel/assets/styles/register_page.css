@@ -4,11 +4,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(115deg, rgb(0, 0, 0) 5.8%, rgb(6, 114, 11) 112.6%);
+    background-image: url(../images/home_bg.jpg);
 }
 
 .login-form {
-    background: #222;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     width: 400px;
@@ -79,15 +79,15 @@ input:focus {
 input:focus + label {
     top: 0;
     transform: translateY(-50%);
-    color: #156e44;
-    background: #222;
+    color: #f2f2f2;
+    background: transparent;
 }
 
 input:valid + label {
     top: 0;
     transform: translateY(-50%);
-    color: #156e44;
-    background: #222;
+    color: #f2f2f2;
+    background: transparent;
 }
 
 

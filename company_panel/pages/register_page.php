@@ -42,7 +42,7 @@ session_start();
                     <?php endif; ?>
                 </div>
                 <div class="input-container">
-                    <input type="email" id="email" name="email" value="<?= isset($_SESSION['reg_old']['email']) ? $_SESSION['reg_old']['email'] : '' ?>" required/>
+                    <input type="text" id="email" name="email" value="<?= isset($_SESSION['reg_old']['email']) ? $_SESSION['reg_old']['email'] : '' ?>" required/>
                     <label for="email">Email</label>
                     <?php if (isset($_SESSION['error_message']['email'])) : ?>
                         <span class="text-light error_text"><?= $_SESSION['error_message']['email']?></span>

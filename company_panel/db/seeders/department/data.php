@@ -1,16 +1,16 @@
 <?php
     return [
-        ['department_name' => 'HR'],
-        ['department_name' => 'IT Service'],
-        ['department_name' => 'Finance'],
-        ['department_name' => 'Sales'],
-        ['department_name' => 'Store Department'],
-        ['department_name' => 'Accounting'],
-        ['department_name' => 'Designing department'],
-        ['department_name' => 'Product development'],
-        ['department_name' => 'Quality department'],
-        ['department_name' => 'Dispatch department'],
-        ['department_name' => 'Inspection Department'],
-        ['department_name' => 'Production'],
+        ['d_name' => 'HR'],
+        ['d_name' => 'IT Service'],
+        ['d_name' => 'Finance'],
+        ['d_name' => 'Sales'],
+        ['d_name' => 'Store Department'],
+        ['d_name' => 'Accounting'],
+        ['d_name' => 'Designing department'],
+        ['d_name' => 'Product development'],
+        ['d_name' => 'Quality department'],
+        ['d_name' => 'Dispatch department'],
+        ['d_name' => 'Inspection Department'],
+        ['d_name' => 'Production'],
     ]
 ?>

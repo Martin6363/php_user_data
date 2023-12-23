@@ -1,12 +1,12 @@
 <?php
     // scandir('../seeders');
     return [
-        ['position_name' => 'Director'],
-        ['position_name' => 'Manager'],
-        ['position_name' => 'Human Resources Department'],
-        ['position_name' => 'Developer'],
-        ['position_name' => 'Worker'],
-        ['position_name' => 'Cleanser'],
-        ['position_name' => 'Accountant'],
+        ['p_name' => 'Director'],
+        ['p_name' => 'Manager'],
+        ['p_name' => 'Human Resources Department'],
+        ['p_name' => 'Developer'],
+        ['p_name' => 'Worker'],
+        ['p_name' => 'Cleanser'],
+        ['p_name' => 'Accountant'],
     ]
 ?>

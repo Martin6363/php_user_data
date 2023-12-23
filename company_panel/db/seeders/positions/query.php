@@ -5,13 +5,13 @@
 
     function updatePositions ($conn, $positionsData) {
         foreach ($positionsData as $position) {
-            $name = mysqli_real_escape_string($conn, $position['position_name']);
+            $name = mysqli_real_escape_string($conn, $position['p_name']);
 
-            $checkSql = "SELECT * FROM positions WHERE position_name = '$name'";
+            $checkSql = "SELECT * FROM positions WHERE p_name = '$name'";
             $checkResult = mysqli_query($conn, $checkSql);
 
             if (mysqli_num_rows($checkResult) == 0) {
-                $insertSql = "INSERT INTO positions (position_name) VALUES ('$name')";
+                $insertSql = "INSERT INTO positions (p_name) VALUES ('$name')";
                 mysqli_query($conn, $insertSql);
 
                 if (mysqli_errno($conn) != 0) {
