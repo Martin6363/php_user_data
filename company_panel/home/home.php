@@ -2,6 +2,11 @@
     session_start();
     include "../db/connect_db.php";
     include('pagination.php'); 
+
+    if (!isset($_SESSION['login_value'])) {
+        header('Location: ../pages/login_page.php');
+        exit();
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -66,14 +71,32 @@
                                 </h4>
                                 <div class="input-group mb-3 mt-4">
                                     <input type="text" class="form-control" id="search" placeholder="Search">
-                                    <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    <button class="btn btn-outline-info" id="search_btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                                <div class="filter_box">
+                                    <h6 class="text-light">Filter Data</h6>
+                                    <div class="input-group filter_select_box" style="width: 20%;">
+                                        <select class="form-select" id="filter_data" name="filter" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                            <option value="All" selected>All...</option>
+                                            <option value="Employees">Employees</option>
+                                            <option value="Directors">Directors</option>
+                                        </select>
+                                        <button class="btn btn-outline-info" id="filter_btn" type="button">Filter</button>
+                                    </div>
+                                    <button id="refreshBtn" class="btn btn-outline-info mt-2 btn-sm">Refresh</button>
                                 </div>
                             </div>
                             <div class="card-body table-responsive">
-                                <table class="table table-dark table-striped">
+                                <table class="table w-100" style="background: rgba(0,0,0,0.6); color: #ccc;">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
+                                            <th scope="col">ID 
+                                                <select class="sort_select" title="Sorting" name="sort" id="sort_id">
+                                                    <option value="Default" selected>Default</option>
+                                                    <option value="ASC">Asc</option>
+                                                    <option value="DESC">Desc</option>
+                                                </select>
+                                            </th>
                                             <th scope="col">First Name</th>
                                             <th scope="col">Last Name</th>
                                             <th scope="col">Email</th>
@@ -84,31 +107,31 @@
                                         </th>
                                     </thead>
                                     <tbody id="showData">
-                                        <tr>
                                         <?php
                                             while ($result = mysqli_fetch_assoc($sql_result)) :                                          
                                         ?>  
-                                            <th scope="row"><?= $result['id']?></th>
-                                                <td><?=$result['first_name']?></td>
-                                                <td><?= $result['last_name']?></td>
-                                                <td><?=$result['email']?></td>
-                                                <td><?=$result['dob']?></td>
-                                                <td><?=$result['company_name']?></td>
-                                                <td><?=$result['create_at']?></td>
-                                                <td>
-                                                    <div class="actions_table">
-                                                        <input type="hidden" name="action_id" value="<?= $result['id']?>">
-                                                        <button type="button" class="btn btn-info btn-sm viewBtn" data-bs-target="#exampleModal4" data-bs-toggle="modal">
-                                                            View
-                                                        </button>
-                                                        <button type="button" class="btn btn-success btn-sm editBtn" data-bs-target="#exampleModal2" data-bs-toggle="modal">
-                                                            Edit
-                                                        </button>
-                                                        <button type="button" class="btn btn-danger btn-sm deleteBtn" data-bs-target="#exampleModal3" data-bs-toggle="modal">
-                                                            Delete
-                                                        </button>
-                                                    </div>
-                                                </td>
+                                            <tr>
+                                                <th scope="row"><?= $result['id']?></th>
+                                                    <td><?=$result['first_name']?></td>
+                                                    <td><?= $result['last_name']?></td>
+                                                    <td><?=$result['email']?></td>
+                                                    <td><?=$result['dob']?></td>
+                                                    <td><?=$result['company_name']?></td>
+                                                    <td><?=$result['create_at']?></td>
+                                                    <td>
+                                                        <div class="actions_table">
+                                                            <input type="hidden" name="action_id" value="<?= $result['id']?>">
+                                                            <button type="button" class="btn btn-info btn-sm viewBtn" data-bs-target="#exampleModal4" data-bs-toggle="modal">
+                                                                View
+                                                            </button>
+                                                            <button type="button" class="btn btn-success btn-sm editBtn" data-bs-target="#exampleModal2" data-bs-toggle="modal">
+                                                                Edit
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger btn-sm deleteBtn" data-bs-target="#exampleModal3" data-bs-toggle="modal">
+                                                                Delete
+                                                            </button>
+                                                        </div>
+                                                    </td>
                                             </tr>
                                         <?php
                                             endwhile;
@@ -171,7 +194,18 @@
                                 </svg>
                                 <span class="progress_text">
                                     <i class="fa-solid fa-user"></i>
-                                    <b>4500</b>
+                                    <b>
+                                        <?php
+                                            $query_all_emp = "SELECT * FROM employees";
+                                            $query_all_emp_result = mysqli_query($conn, $query_all_emp);
+                                            if (mysqli_num_rows($query_all_emp_result) > 0) {
+                                                $count_emp = mysqli_fetch_all($query_all_emp_result);
+                                                echo count($count_emp);
+                                            } else {
+                                                echo "No User Result";
+                                            }
+                                        ?>
+                                    </b>
                                 </span>
                             </div>
                             <div class="progress_box">
@@ -195,23 +229,18 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="chart_cont w-100 mt-3">
+                            <?php include "./chart.php"?>
+                        </div>
                     </div>            
                 </div>
             </div>
         </main>
     </div>
-    <!-- <script>
-        // document.addEventListener('DOMContentLoaded', function() {
-        // let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-        // myModal.show();
-        // });
-    </script> -->
     <script>
         $(document).ready(function () {
             $('.editBtn').on('click', function () {
                 let employeeId = $(this).closest('tr').find('[name="action_id"]').val();
-
-                $('#exampleModal2').modal('show');
 
                 $.ajax({
                     type: 'POST',
@@ -226,16 +255,18 @@
                         $('#dob').val(response.dob);
                         $('#phone').val(response.phone_number);
                         $('#gender').val(response.gender);
-                        $('#company').val(response.company_id);
+                        $('#company').val(response.company_name);
                         $('#country').val(response.country);
                         $('#position').val(response.position_id);
                         $('#salary').val(response.salary_amount);
+                        console.log(response);
                     },
                     error: function () {
                         console.log('Error fetching employee data.');
                     }
                 });
             });
+
 
             $('.deleteBtn').on('click', function () {
                 let idToDelete = $(this).closest('tr').find('[name="action_id"]').val();
@@ -247,7 +278,7 @@
                     dataType: 'json',
                     success: function (response) {
                         $('#delete_id').val(response.id);
-                        console.log(response.id);
+                        $('#deleted_name').html(response.first_name+ ' ' + response.last_name);
                     },
                     error: function () {
                         console.log('Error fetching delete id.');
@@ -255,22 +286,96 @@
                 })
             });
 
-            $('#search').on("keyup", function () {
-                let searchValue = $(this).val();
-                console.log(searchValue);
+
+            $('.viewBtn').on('click', function () {
+                let idToView = $(this).closest('tr').find('[name="action_id"]').val();
                 $.ajax({
-                    method: 'GET',
-                    url: '../actions/search.php',
-                    data: {search: searchValue},
-                    success: function(response) {
-                        $("#showData").html(response);
+                    type: 'GET',
+                    url: '../actions/view.php',
+                    data: { id: idToView },
+                    dataType: 'json',
+                    success: function (response) {
+                        $('#view_fname').html(response.first_name);
+                        $('#view_lname').html(response.last_name);
+                        $('#view_email').html(response.email);
+                        $('#view_dob').html(response.dob);
+                        $('#view_phone').html(response.phone_number);
+                        $('#view_gender').html(response.gender);
+                        $('#view_registered').html(response.create_at);
+                        $('#view_fname').html(response.first_name);
+                        $('#view_country').html(response.country);
+                        $('#view_company').html(response.company_name);
+                        $('#view_position').html(response.position_name);
+                        $('#view_salary').html(response.salary_amount);
+                        $('#exampleModal4').modal('show');
+                    },
+                    error: function () {
+                        console.log('Error fetching employee data for view.');
                     }
                 })
+            })
+
+
+            let searchTimeout;
+            $('#search').on("keyup", function () {
+                let searchValue = $(this).val();
+                clearTimeout(searchTimeout);
+
+                searchTimeout = setTimeout(function() {
+                    $.ajax({
+                        method: 'GET',
+                        url: '../actions/search.php',
+                        data: {search: searchValue},
+                        beforeSend:function() {
+                            $("#showData").html("<span>Searching...</span>");
+                        },
+                        success: function(response) {
+                            $("#showData").html(response);
+                        }
+                    });
+            }, 1000);
             });
+
+
+            $('#filter_btn').on('click', function () {
+                let value = $('#filter_data').val();
+                $.ajax({
+                    url: "../actions/filter.php",
+                    type: 'GET',
+                    data: {filter: value},
+                    beforeSend:function() {
+                        $("#showData").html("<span>Working...</span>");
+                    },
+                    success:function(data) {
+                        $("#showData").html(data);
+                    }
+                })
+            })
+
+            $('#sort_id').on('change', function () {
+                let value = $('#sort_id').val();
+
+                $.ajax({
+                    url: '../actions/sort_by_id.php',
+                    type: 'GET',
+                    data: { sort: value },
+                    beforeSend:function() {
+                            $("#showData").html("<span>Sorting...</span>");
+                        },
+                    success:function(data) {
+                        $("#showData").html(data);
+                        console.log(data);
+                    }
+                });
+            })
+
+            $("#refreshBtn").on("click",function(){
+                window.location.reload();
+            });
+
         });
     </script>
 
-    <script src="./progress.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

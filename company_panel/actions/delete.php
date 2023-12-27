@@ -19,6 +19,9 @@
         if (!empty($id)) {
             $id = mysqli_real_escape_string($conn, $id); 
 
+            $query_delete_salaries = "DELETE FROM salaries WHERE emp_id = '$id'";
+            $result_delete_salaries = mysqli_query($conn, $query_delete_salaries);
+
             $query = "DELETE FROM employees WHERE id = '$id'";
             $query_result = mysqli_query($conn, $query);
 

@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>
@@ -73,6 +73,29 @@
                                 ?>
                             </select>
                             <label for="floatingInput">Company</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingInput" name="director" required>
+                                <?php
+                                    $sql_director = "SELECT DISTINCT e1.id, e1.first_name, e1.last_name
+                                        FROM employees AS e1
+                                        LEFT JOIN employees AS e2 ON e1.id = e2.super_visor_id
+                                        WHERE e1.super_visor_id IS NULL OR e1.id = e2.super_visor_id";
+                                    
+                                    $sql_director_result = mysqli_query($conn, $sql_director);
+
+                                    if (mysqli_num_rows($sql_director_result) > 0) :
+                                        foreach ($sql_director_result as $value) :
+                                        ?>
+                                        <option value="<?= $value['id']?>">
+                                            <?= $value['first_name'] . ' ' . $value['last_name'] ?>
+                                        </option>
+                                <?php
+                                        endforeach;
+                                    endif;
+                                ?>
+                            </select>
+                            <label for="floatingInput">Select the Director</label>
                         </div>
                         <div class="input_cont d-flex justify-content-space-between gap-3 w-100">
                             <div class="form-floating mb-3 w-50">

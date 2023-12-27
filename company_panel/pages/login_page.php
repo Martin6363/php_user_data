@@ -1,5 +1,29 @@
 <?php
+    function checkDatabase() {
+      $conn = mysqli_connect('localhost', 'root', '');
+      if (!$conn) {
+          die('Error connecting to the database: ' . mysqli_connect_error());
+      }
+
+      $dbCheckQuery = mysqli_query($conn, 'SHOW DATABASES LIKE \'company_office\'');
+
+      if (!$dbCheckQuery) {
+          die('Error checking for database: ' . mysqli_error($conn));
+      }
+     
+      $dbExists = mysqli_num_rows($dbCheckQuery) > 0;
+
+      if (!$dbExists) {
+        include('../db/auto_create_db.php');
+      }
+      mysqli_close($conn);
+    }
+
+    checkDatabase();
+
+    
   session_start();
+
   if (isset($_SESSION['error_message']) || isset($_SESSION['reg_old'])) {
     unset($_SESSION['error_message']);
     unset($_SESSION['reg_old']);
@@ -23,8 +47,10 @@
   <div class="wrapper">
     <div class="container d-flex justify-content-center">
       <div class="login-form">
+        <div class="logo_box">
+          <img src="../assets/images/logo.png" alt="">
+        </div>
             <h2>Login</h2>
-            <a class="web_site_link" href="../home/home.php">← Go to Web Site Demo</a>
             <form class="form" action="../actions/login.php" method="get">
                 <div class="input-container">
                     <input type="text" id="username" name="user_login" value="<?= isset($_SESSION['login_value']['username']) ? $_SESSION['login_value']['username'] : ''?>" required>

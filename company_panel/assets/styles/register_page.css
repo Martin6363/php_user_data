@@ -73,7 +73,7 @@ input {
 
 input:valid,
 input:focus {
-    border-color: #156e44;
+    border-color: rgba(0,212,255,1);
 }
 
 input:focus + label {
@@ -86,14 +86,15 @@ input:focus + label {
 input:valid + label {
     top: 0;
     transform: translateY(-50%);
-    color: #f2f2f2;
+    color: rgba(0,212,255,1);
     background: transparent;
+    
 }
 
 
 .login-button {
     width: 100%;
-    background-color: #156e44;
+    background-color: rgba(0,212,255,1);
     color: #fff;
     padding: 12px;
     border: none;
@@ -104,7 +105,7 @@ input:valid + label {
 }
 
 .login-button:hover {
-    background-color: #238b5b;
+    background-color: rgb(0, 162, 195);
 }
 
 .submit-box {

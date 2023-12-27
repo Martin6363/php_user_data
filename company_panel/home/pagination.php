@@ -33,6 +33,7 @@
             departments ON companies.department_id = departments.id
         INNER JOIN 
             positions ON employees.position_id = positions.id
+        ORDER BY employees.id DESC
         LIMIT $start_from, $num_per_page";
 
     $sql_result = mysqli_query($conn, $sql);

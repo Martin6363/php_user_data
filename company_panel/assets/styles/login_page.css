@@ -73,7 +73,7 @@ input {
 
 input:valid,
 input:focus {
-    border-color: #156e44;
+    border-color: rgba(0,212,255,1);
 }
 
 input:focus + label {
@@ -92,7 +92,7 @@ input:valid + label {
 
 .login-button {
     width: 100%;
-    background-color: #156e44;
+    background-color: rgba(0,212,255,1);
     color: #fff;
     padding: 12px;
     border: none;
@@ -103,7 +103,7 @@ input:valid + label {
 }
 
 .login-button:hover {
-    background-color: #238b5b;
+    background-color: rgb(0, 162, 195);
 }
 
 .submit-box {
@@ -118,4 +118,19 @@ input:valid + label {
     text-decoration: none;
     color: #888;
     font-family: sans-serif;
+}
+
+.logo_box {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo_box img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    -webkit-user-drag: none;
 }

@@ -1,3 +1,7 @@
+<?php
+    include "../db/connect_db.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +41,7 @@
                                 <label for="dob">Date of birth</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="name@example.com"/>
+                                <input type="number" class="form-control" id="phone" name="phone" placeholder="name@example.com"/>
                                 <label for="phone">Phone</label>
                             </div>
                             <div class="form-floating mb-3">
@@ -50,7 +54,21 @@
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-select" id="company" name="company">
+                                <?php
+                                    $employeeId = isset($_POST['id']) ? $_POST['id'] : '';
+                                    $sql = "SELECT * FROM companies";
+                                    $sql_result = mysqli_query($conn, $sql);
 
+                                    if(mysqli_num_rows($sql_result) > 0) :
+                                        while ($row = mysqli_fetch_assoc($sql_result)):
+                                ?>     
+                                           <option value="<?= $row['id']?>" <?php echo ($employeeId == $row['id']) ? 'selected' : '' ?>>
+                                                <?= $row['name'] ?>
+                                            </option>
+                                <?php
+                                    endwhile;
+                                    endif;
+                                ?>
                             </select>
                             <label for="company">Company</label>
                         </div>
