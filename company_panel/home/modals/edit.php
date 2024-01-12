@@ -1,5 +1,6 @@
 <?php
     include "../db/connect_db.php";
+    $employeeId = isset($_POST['id']) ? $_POST['id'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -55,23 +56,29 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" id="company" name="company">
                                 <?php
-                                    $employeeId = isset($_POST['id']) ? $_POST['id'] : '';
-                                    $sql = "SELECT * FROM companies";
+                                    $sql = "SELECT companies.name, companies.id, employees.company_id 
+                                    FROM employees
+                                    INNER JOIN companies ON companies.id = employees.company_id
+                                    WHERE employees.id = '$employeeId'";
                                     $sql_result = mysqli_query($conn, $sql);
 
-                                    if(mysqli_num_rows($sql_result) > 0) :
-                                        while ($row = mysqli_fetch_assoc($sql_result)):
-                                ?>     
-                                           <option value="<?= $row['id']?>" <?php echo ($employeeId == $row['id']) ? 'selected' : '' ?>>
+                                    if (mysqli_num_rows($sql_result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($sql_result)) :
+                                ?>
+                                            <option value="<?= $row['company_id'] ?>" selected>
+                                                <?= $row['company_id'] . '. '?>
                                                 <?= $row['name'] ?>
                                             </option>
                                 <?php
-                                    endwhile;
-                                    endif;
+                                        endwhile;
+                                    } else {
+                                        echo '<option value="" disabled>No companies available</option>';
+                                    };
                                 ?>
                             </select>
                             <label for="company">Company</label>
                         </div>
+
                         <div class="input_cont d-flex justify-content-space-between gap-3 w-100">
                             <div class="form-floating mb-3 w-50">
                                 <select class="form-select" id="country" name="country">

@@ -34,5 +34,7 @@
         } else {
             echo "Error: ID is empty.";
         }
+        
+        mysqli_close($conn);
     }
 ?>

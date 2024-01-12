@@ -1,27 +1,6 @@
 <?php
-    function checkDatabase() {
-      $conn = mysqli_connect('localhost', 'root', '');
-      if (!$conn) {
-          die('Error connecting to the database: ' . mysqli_connect_error());
-      }
+  include "../db/checkDatabase.php";
 
-      $dbCheckQuery = mysqli_query($conn, 'SHOW DATABASES LIKE \'company_office\'');
-
-      if (!$dbCheckQuery) {
-          die('Error checking for database: ' . mysqli_error($conn));
-      }
-     
-      $dbExists = mysqli_num_rows($dbCheckQuery) > 0;
-
-      if (!$dbExists) {
-        include('../db/auto_create_db.php');
-      }
-      mysqli_close($conn);
-    }
-
-    checkDatabase();
-
-    
   session_start();
 
   if (isset($_SESSION['error_message']) || isset($_SESSION['reg_old'])) {
@@ -53,11 +32,11 @@
             <h2>Login</h2>
             <form class="form" action="../actions/login.php" method="get">
                 <div class="input-container">
-                    <input type="text" id="username" name="user_login" value="<?= isset($_SESSION['login_value']['username']) ? $_SESSION['login_value']['username'] : ''?>" required>
+                    <input type="text" id="username" name="user_login" title="Username" value="<?= isset($_SESSION['login_value']['username']) ? $_SESSION['login_value']['username'] : ''?>" required>
                     <label for="username">Username</label>
                 </div>
                 <div class="input-container">
-                    <input type="password" id="password" name="user_password" value="<?= isset($_SESSION['login_value']['password']) ? $_SESSION['login_value']['password'] : ''?>" required>
+                    <input type="password" id="password" name="user_password" title="Password" value="<?= isset($_SESSION['login_value']['password']) ? $_SESSION['login_value']['password'] : ''?>" required>
                     <label for="password">Password</label>
                 </div>
                 <div class="submit-box">

@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS employees (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- Director Salary table
+-- Salary table
 CREATE TABLE IF NOT EXISTS salaries (
     id INT PRIMARY KEY AUTO_INCREMENT,
     emp_id INT NOT NULL,
@@ -99,9 +99,13 @@ VALUES
     ('Jane', 'Smith', 'jane.smith@example.com', '1985-02-15', 987654321, 'Female', 'Canada', 2, 2, 1),
     ('Bob', 'Johnson', 'bob.johnson@example.com', '1995-05-10', 555555555, 'Male', 'UK', 3, 3, 2),
     ('Vardan', 'Ghukasyan', 'vardan.vardan@example.com', '1985-02-15', 047654321, 'Male', 'Armenia', 2, 2, 2),
-    ('Arman', 'Hovhannisyan', 'arman.arman@example.com', '1995-05-10', 555555555, 'Male', 'UK', 3, 3, 1),
-    ('Sargis', 'Hovsepyan', 'sarqo.saqo@example.com', '1985-02-15', 0597654321, 'Male', 'Canada', 2, 2, 2),
-    ('Ani', 'Aleqsanyan', 'ani.ani@example.com', '2003-05-10', 0485555555, 'Male', 'Armenia', 3, 3, 1);
+    ('Arman', 'Hovhannisyan', 'arman.arman@example.com', '1995-05-10', 5555555, 'Male', 'UK', 3, 3, 1),
+    ('Sargis', 'Hovsepyan', 'sarqo.saqo@example.com', '1985-02-15', 05976321, 'Male', 'Canada', 2, 2, 2),
+    ('Ani', 'Aleqsanyan', 'ani.ani@example.com', '2003-05-10', 04855555, 'Male', 'Armenia', 1, 2, 1),
+    ('Jon', 'Cena', 'jon@example.com', '1985-02-15', 04445321, 'Male', 'Usa', 3, 1, 2),
+    ('Yuri', 'Boyka', 'boyka@example.com', '1995-05-10', 45464455, 'Male', 'Usa', 1, 3, 1),
+    ('Bob', 'Tyson', 'bob@example.com', '1985-02-15', 05976321, 'Male', 'Canada', 3, 3, 2),
+    ('Mike', 'Alexandra', 'mike@example.com', '2003-05-10', 0565555, 'Male', 'Armenia', 3, 3, 1);
 
 
 
@@ -113,7 +117,11 @@ INSERT INTO salaries (emp_id, amount, hire_date, bonus) VALUES
     (3, 7500.00, CURRENT_DATE, 'Performance bonus'),
     (4, 9500.00, CURRENT_DATE, 'Performance bonus'),
     (6, 25000.00, CURRENT_DATE, 'Performance bonus'),
-    (7, 50000.00, CURRENT_DATE, 'Performance bonus');
+    (7, 50000.00, CURRENT_DATE, 'Performance bonus'),
+    (8, 60000.00, CURRENT_DATE, 'Performance bonus'),
+    (9, 30000.00, CURRENT_DATE, 'Performance bonus'),
+    (10, 28000.00, CURRENT_DATE, 'Performance bonus'),
+    (11, 70000.00, CURRENT_DATE, 'Performance bonus');
 
 
 

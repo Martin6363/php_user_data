@@ -37,4 +37,4 @@
         LIMIT $start_from, $num_per_page";
 
     $sql_result = mysqli_query($conn, $sql);
-?>
+?>                                        

@@ -46,6 +46,7 @@
             departments ON companies.department_id = departments.id
         INNER JOIN 
             positions ON employees.position_id = positions.id
+        ORDER BY employees.id DESC
         LIMIT $start_from, $num_per_page";
     }
 
@@ -68,13 +69,13 @@
                         <div class="actions_table">
                             <input type="hidden" name="action_id" value="' . $result_row['id'] . '">
                             <button type="button" class="btn btn-info btn-sm viewBtn" data-bs-target="#exampleModal4" data-bs-toggle="modal">
-                                View
+                                <i class="fa-solid fa-eye"></i>
                             </button>
-                            <button type="button" class="btn btn-success btn-sm editBtn" data-bs-toggle="modal">
-                                Edit
+                            <button type="button" class="btn btn-success btn-sm editBtn" data-bs-target="#exampleModal2" data-bs-toggle="modal">
+                                <i class="fa-solid fa-pen-to-square"></i>
                             </button>
-                            <button type="button" class="btn btn-danger btn-sm deleteBtn" data-bs-toggle="modal">
-                                Delete
+                            <button type="button" class="btn btn-danger btn-sm deleteBtn" data-bs-target="#exampleModal3" data-bs-toggle="modal">
+                                <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
                     </td>

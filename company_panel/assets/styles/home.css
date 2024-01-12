@@ -35,12 +35,17 @@
 }
 
 .nav_link_hover {
-    padding: 15px 25px !important;
+    display: flex !important;
+    justify-content: start !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 10px 20px !important;
 }
 
 .nav_link_hover:hover {
-    background-color: #198754 !important;
+    background-color: var(--line-border-fill) !important;
     color: #fff !important;
+    box-shadow: 0px 0px 8px 0px rgba(67,146,167,0.75);
 }
 
 main {
@@ -155,6 +160,51 @@ main {
 .card {
   background: rgba(0, 0, 0, 0.3) !important;
   min-height: 550px !important;
+  animation: opacity 1s ease both;
+}
+
+.filter_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter_select_box {
+  display: flex !important;
+  gap: 5px !important;
+  align-items: end !important;
+}
+
+.filter_btn {
+  height: 38px;
+  width: 38px;
+  border-radius: 100px;
+  background-color: transparent;
+  border: none;
+  border: 1px solid #0dcaf0;
+  color: #0dcaf0;
+  user-select: none;
+  outline: none;
+  transition: .1s ease;
+}
+
+.filter_btn:hover {
+  background-color: #0dcaf0;
+  color: #fff;
+}
+
+.search_input {
+  width: 100% !important;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 1340px) {
